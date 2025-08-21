@@ -1,5 +1,8 @@
 # Importa módulos
 import data, helpers
+from pages import UrbanRoutesPage
+from selenium import webdriver
+from selenium.webdriver import DesiredCapabilities
 
 # Classe de testes do aplicativo Urban Routes
 class TestUrbanRoutes:
@@ -12,46 +15,134 @@ class TestUrbanRoutes:
             print('Não foi possível conectar ao Urban Routes. '
                   'Verifique se o servidor está ligado e ainda em execução')
 
+        capabilities = DesiredCapabilities.CHROME
+        capabilities["goog:loggingPrefs"] = {'performance': 'ALL'}
+        cls.driver = webdriver.Chrome()
+
     def test_set_route(self):
-    # Adicionar em S8
-        print("função criada para definir rota")
-        pass
+        self.driver.get(data.URBAN_ROUTES_URL)
+        self.urban_routes_page = UrbanRoutesPage(self.driver)
+        # Adicione esperas implícitas para que os elementos da web tenham tempo de carregar
+        self.driver.implicitly_wait(3)
+
+        self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
+
+        assert self.urban_routes_page.get_text_from() == data.ADDRESS_FROM and self.urban_routes_page.get_text_to() == data.ADDRESS_TO, f"{actual_value_from} / {expected_value_from} e {actual_value_to} / {expected_value_to}"
+
+        print(f"O teste passou. Uhul!!!")
 
     def test_select_plan(self):
-    # Adicionar em S8
-        print("função criada para definir plano")
-        pass
+        self.driver.get(data.URBAN_ROUTES_URL)
+        self.urban_routes_page = UrbanRoutesPage(self.driver)
+        # Adicione esperas implícitas para que os elementos da web tenham tempo de carregar
+        self.driver.implicitly_wait(3)
+        self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
 
-    def test_fill_phone_numer(self):
-    # Adicionar em S8
-        print("função criada para preencher número de telefone")
-        pass
+        self.urban_routes_page.select_plan()
+
+        assert 'active' in  self.urban_routes_page.get_select_plan_comfort()
+
+        print('O teste passou. Uhul!!!')
+
+    def test_fill_phone_number(self):
+        self.driver.get(data.URBAN_ROUTES_URL)
+        self.urban_routes_page = UrbanRoutesPage(self.driver)
+        # Adicione esperas implícitas para que os elementos da web tenham tempo de carregar
+        self.driver.implicitly_wait(3)
+        self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
+        self.urban_routes_page.select_plan()
+
+        self.urban_routes_page.fill_phone_number(data.PHONE_NUMBER)
+
+        assert data.PHONE_NUMBER == self.urban_routes_page.get_phone_number()
+
+        print('Oteste passou. Uhul!!!')
 
     def test_fill_card(self):
-    # Adicionar em S8
-        print("função criada para preencher número de cartão")
-        pass
+        self.driver.get(data.URBAN_ROUTES_URL)
+        self.urban_routes_page = UrbanRoutesPage(self.driver)
+        # Adicione esperas implícitas para que os elementos da web tenham tempo de carregar
+        self.driver.implicitly_wait(3)
+        self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
+        self.urban_routes_page.select_plan()
+        self.urban_routes_page.fill_phone_number(data.PHONE_NUMBER)
+
+        self.urban_routes_page.fill_card(data.CARD_NUMBER, data.CARD_CODE)
+
+        assert self.urban_routes_page.get_fill_card()
+
+        print('O teste passou. Uhul!!!')
 
     def test_comment_for_driver(self):
-    # Adicionar em S8
-        print("função criada para mandar mensagem ao motorista")
-        pass
+        self.driver.get(data.URBAN_ROUTES_URL)
+        self.urban_routes_page = UrbanRoutesPage(self.driver)
+        # Adicione esperas implícitas para que os elementos da web tenham tempo de carregar
+        self.driver.implicitly_wait(3)
+        self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
+        self.urban_routes_page.select_plan()
+        self.urban_routes_page.fill_phone_number(data.PHONE_NUMBER)
+        self.urban_routes_page.fill_card(data.CARD_NUMBER, data.CARD_CODE)
+
+        self.urban_routes_page.comment_for_drive(data.COMMENT_TO_DRIVER)
+
+        assert data.COMMENT_TO_DRIVER == self.urban_routes_page.get_comment_for_drive()
+
+        print(f'O teste passou. Uhul!!!')
 
     def test_order_blanket_and_handkerciefs(self):
-    # Adicionar em S8
-        print("função criada para selecionar cobertor e/ou lenços")
-        pass
+        self.driver.get(data.URBAN_ROUTES_URL)
+        self.urban_routes_page = UrbanRoutesPage(self.driver)
+        # Adicione esperas implícitas para que os elementos da web tenham tempo de carregar
+        self.driver.implicitly_wait(3)
+        self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
+        self.urban_routes_page.select_plan()
+        self.urban_routes_page.fill_phone_number(data.PHONE_NUMBER)
+        self.urban_routes_page.fill_card(data.CARD_NUMBER, data.CARD_CODE)
+        self.urban_routes_page.comment_for_drive(data.COMMENT_TO_DRIVER)
 
-    # Testa o pedido de 2 sorvetes
+        self.urban_routes_page.order_blanket_and_handkerciefs()
+
+        assert self.urban_routes_page.get_order_blanket_and_handkerciefs()
+
+        print(f'O teste passou. Uhul!!!')
+
     def test_order_2_ice_creams(self):
-    # Adicionar em S8
-        print("função criada para selecionar 2 sorvetes")
-        # Itera sobre um objeto de range 2
-        for _ in range(2):
-            pass
-        pass
+        self.driver.get(data.URBAN_ROUTES_URL)
+        self.urban_routes_page = UrbanRoutesPage(self.driver)
+        # Adicione esperas implícitas para que os elementos da web tenham tempo de carregar
+        self.driver.implicitly_wait(3)
+        self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
+        self.urban_routes_page.select_plan()
+        self.urban_routes_page.fill_phone_number(data.PHONE_NUMBER)
+        self.urban_routes_page.fill_card(data.CARD_NUMBER, data.CARD_CODE)
+        self.urban_routes_page.comment_for_drive(data.COMMENT_TO_DRIVER)
+        self.urban_routes_page.order_blanket_and_handkerciefs()
+
+        self.urban_routes_page.order_2_ice_creams()
+
+        assert self.urban_routes_page.get_order_2_ice_creams() == "2"
+
+        print(f'O teste passou. Uhul!!!')
 
     def test_car_search_model_appears(self):
-    # Adicionar em S8
-        print("função criada para verificar modelos de veículos ")
-        pass
+        self.driver.get(data.URBAN_ROUTES_URL)
+        self.urban_routes_page = UrbanRoutesPage(self.driver)
+        # Adicione esperas implícitas para que os elementos da web tenham tempo de carregar
+        self.driver.implicitly_wait(3)
+        self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
+        self.urban_routes_page.select_plan()
+        self.urban_routes_page.fill_phone_number(data.PHONE_NUMBER)
+        self.urban_routes_page.fill_card(data.CARD_NUMBER, data.CARD_CODE)
+        self.urban_routes_page.comment_for_drive(data.COMMENT_TO_DRIVER)
+        self.urban_routes_page.order_blanket_and_handkerciefs()
+        self.urban_routes_page.order_2_ice_creams()
+
+        self.urban_routes_page.car_search_model_appers()
+
+        assert data.CAR_WAIT in self.urban_routes_page.get_car_search_model_appers()
+
+        print(f'O teste passou. Uhul!!!')
+
+    @classmethod
+    def teardown_class(cls):
+        cls.driver.quit()
