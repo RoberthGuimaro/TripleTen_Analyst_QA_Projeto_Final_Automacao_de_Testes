@@ -1,86 +1,74 @@
-# 📌 Sprints 07, 08 e Projeto Final – Automação de Testes - Roberth Guimaro
+# 📌 Sprints 07 & 08 – Automação de Testes - Roberth Guimaro
 
-## 🎯 Objetivo
-Consolidar os conhecimentos em **automação de testes com Selenium**, evoluindo desde os fundamentos de **programação orientada a objetos (POO)** e manipulação do **WebDriver** até a aplicação de padrões avançados como **Page Object Model (POM)**.  
-O ciclo é concluído com um **projeto prático de automação completa**, simulando cenários reais de QA em aplicações web.
+# Automação de Testes – Urban Routes
 
----
+## Objetivo
 
-## 📚 Conteúdo das Sprints
+O projeto tem como foco automatizar tarefas de teste web na aplicação **Urban Routes**, garantindo que os fluxos críticos funcionem de ponta a ponta sem falhas manuais. A ideia é validar cenários reais de uso, como rotas, planos de viagem e pagamentos, de forma rápida, repetível e confiável.
 
-### 🔹 Sprint 07 – Fundamentos de Automação com Selenium  
-**Programação Orientada a Objetos (POO):**
-- Classes, objetos, atributos e métodos.  
-- Analogia da “receita de bolo” para entender **classes vs objetos**.  
-- Uso do `self` e interações entre objetos.  
+## Escopo
 
-**Selenium WebDriver:**
-- Instalação e configuração do Selenium.  
-- Arquitetura explicada pela metáfora do táxi:  
-  - Analista QA = passageiro (fornece instruções).  
-  - Driver = taxista (interpreta comandos).  
-  - Navegador = veículo (executa ações).  
+* Automação de fluxos principais do usuário:
 
-**Localização de Elementos:**
-- Exploração do **DOM (Document Object Model)**.  
-- Uso do **DevTools** para inspeção.  
-- Estratégias de localização: **CSS Selectors** e **XPath**.  
-- Importância de atributos únicos (`id`) para confiabilidade.  
+  * Definir origem e destino.
+  * Selecionar plano de viagem.
+  * Preencher formulários, incluindo dados de pagamento.
+  * Validar mensagens de erro e campos obrigatórios.
+* Estrutura organizada no padrão **Page Object Model (POM)** para facilitar manutenção.
+* Execução automatizada via **Pytest**.
 
----
+## Stack
 
-### 🔹 Sprint 08 – Técnicas Avançadas e Padrão POM  
-**Interações e Gerenciamento de Tempo:**
-- Ações automatizadas: cliques, preenchimento de campos e verificações.  
-- Esperas **implícitas e explícitas**.  
-- Sincronização entre script e carregamento de página.  
-- Prevenção de falhas por problemas de timing.  
+* **Python**
+* **Selenium WebDriver**
+* **Pytest**
+* Estrutura de Page Objects
+* Git/GitHub para versionamento
 
-**Modelo de Objeto de Página (POM):**
-- Separação entre **lógica de teste** e **elementos da aplicação**.  
-- Estrutura mais **legível, reutilizável e sustentável**.  
-- Facilita **manutenção em projetos escaláveis**.  
-- Organização de código no padrão da indústria.  
+## Como rodar
 
----
+1. Clone o repositório:
 
-### 🔹 Projeto Final – Automação Completa: *Urban Routes*  
-**Implementação Prática:**
-- Automação ponta a ponta da aplicação **Urban Routes**.  
-- Funcionalidades testadas:  
-  - Definição de endereços de origem e destino.  
-  - Seleção de planos de viagem.  
-  - Preenchimento de formulários complexos.  
-  - Adição e validação de cartões de crédito.  
-  - Verificação de funcionalidades críticas.  
+   ```bash
+   git clone https://github.com/RoberthGuimaro/TripleTen_Analyst_QA_Sprint_7_&_8_Automacao_de_Testes.git
+   cd TripleTen_Analyst_QA_Sprint_7_&_8_Automacao_de_Testes
+   ```
 
-**Estrutura Profissional:**
-- Classes de configuração (**setup/teardown**).  
-- Implementação completa do padrão **POM**.  
-- Integração das técnicas aprendidas nas sprints anteriores.  
-- Aplicação das melhores práticas usadas na indústria de QA.  
+2. Crie o ambiente virtual e ative:
 
----
+   ```bash
+   python -m venv venv
+   source venv/bin/activate   # Linux/Mac
+   venv\Scripts\activate      # Windows
+   ```
 
-## 🛠️ Ferramentas e Tecnologias
-- **Python** → Linguagem para automação.  
-- **Selenium WebDriver** → Automação de navegadores.  
-- **Pytest** → Framework de execução de testes.  
-- **Git/GitHub** → Controle de versão e colaboração.  
-- **POM (Page Object Model)** → Padrão de organização de código.  
+3. Instale as dependências:
 
----
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## 💡 Competências Desenvolvidas
-- Criação de suítes de testes automatizados robustas.  
-- Implementação de padrões profissionais de automação.  
-- Otimização e manutenção sustentável de código.    
-- Colaboração eficiente em equipes ágeis de QA.  
+4. Rode os testes:
 
----
+   ```bash
+   pytest
+   ```
 
-## 🚀 Evolução Profissional
-Com a conclusão dessas sprints, ocorre a transição de **QA manual** para **especialista em automação de testes**, apto a:  
-- Garantir qualidade com **eficiência e escalabilidade**.  
-- Contribuir significativamente para a **produtividade da equipe de QA**.  
-- Atuar em projetos complexos com **boas práticas de automação**.  
+## Como testar
+
+* Os testes estão organizados em **Page Objects**.
+* Para criar novos testes, basta adicionar os elementos na página correspondente e escrever o fluxo no arquivo de testes.
+* A execução pode ser feita diretamente pelo **pytest**.
+
+## Evidências
+
+- Resultado da suíte de testes  
+  ![Execução dos testes](evidencias/Testes_passando.png)
+
+- Fluxo automatizado rodando no navegador  
+  ![Fluxo completo](evidencias/Fluxo_completo.mkv)
+
+## Métricas
+- **Casos automatizados**: 8  
+- **Tempo médio de execução da suíte**: ~28 segundos  
+- **Cobertura dos fluxos críticos**: 100%  
