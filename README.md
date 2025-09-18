@@ -63,10 +63,10 @@ O projeto tem como foco automatizar tarefas de teste web na aplicação **Urban 
 ## Evidências
 
 - Resultado da suíte de testes  
-  ![Execução dos testes](evidencias/Testes_passando.png)
+  ![Execução dos testes](Evidencias/Testes_passando.png)
 
 - Fluxo automatizado rodando no navegador  
-  ![Fluxo completo](evidencias/Fluxo_completo.mkv)
+  <video src="evidencias/execucao_completa.mp4" controls>
 
 ## Métricas
 - **Casos automatizados**: 8  
