@@ -17,7 +17,11 @@ class TestUrbanRoutes:
 
         capabilities = DesiredCapabilities.CHROME
         capabilities["goog:loggingPrefs"] = {'performance': 'ALL'}
-        cls.driver = webdriver.Chrome()
+
+        options = webdriver.ChromeOptions()
+        options.add_argument("--start-maximized")
+        cls.driver = webdriver.Chrome(options=options)
+
 
     def test_set_route(self):
         self.driver.get(data.URBAN_ROUTES_URL)
@@ -27,7 +31,7 @@ class TestUrbanRoutes:
 
         self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
 
-        assert self.urban_routes_page.get_text_from() == data.ADDRESS_FROM and self.urban_routes_page.get_text_to() == data.ADDRESS_TO, f"{actual_value_from} / {expected_value_from} e {actual_value_to} / {expected_value_to}"
+        assert self.urban_routes_page.get_text_from() == data.ADDRESS_FROM and self.urban_routes_page.get_text_to() == data.ADDRESS_TO, f"{self.urban_routes_page.get_text_from()} / {data.ADDRESS_FROM} e {self.urban_routes_page.get_text_to()} / {data.ADDRESS_TO}"
 
         print(f"O teste passou. Uhul!!!")
 
@@ -37,6 +41,7 @@ class TestUrbanRoutes:
         # Adicione esperas implícitas para que os elementos da web tenham tempo de carregar
         self.driver.implicitly_wait(3)
         self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
+        self.driver.implicitly_wait(2)
 
         self.urban_routes_page.select_plan()
 
@@ -50,6 +55,7 @@ class TestUrbanRoutes:
         # Adicione esperas implícitas para que os elementos da web tenham tempo de carregar
         self.driver.implicitly_wait(3)
         self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
+        self.driver.implicitly_wait(2)
         self.urban_routes_page.select_plan()
 
         self.urban_routes_page.fill_phone_number(data.PHONE_NUMBER)
@@ -64,6 +70,7 @@ class TestUrbanRoutes:
         # Adicione esperas implícitas para que os elementos da web tenham tempo de carregar
         self.driver.implicitly_wait(3)
         self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
+        self.driver.implicitly_wait(2)
         self.urban_routes_page.select_plan()
         self.urban_routes_page.fill_phone_number(data.PHONE_NUMBER)
 
@@ -79,6 +86,7 @@ class TestUrbanRoutes:
         # Adicione esperas implícitas para que os elementos da web tenham tempo de carregar
         self.driver.implicitly_wait(3)
         self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
+        self.driver.implicitly_wait(2)
         self.urban_routes_page.select_plan()
         self.urban_routes_page.fill_phone_number(data.PHONE_NUMBER)
         self.urban_routes_page.fill_card(data.CARD_NUMBER, data.CARD_CODE)
@@ -95,6 +103,7 @@ class TestUrbanRoutes:
         # Adicione esperas implícitas para que os elementos da web tenham tempo de carregar
         self.driver.implicitly_wait(3)
         self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
+        self.driver.implicitly_wait(2)
         self.urban_routes_page.select_plan()
         self.urban_routes_page.fill_phone_number(data.PHONE_NUMBER)
         self.urban_routes_page.fill_card(data.CARD_NUMBER, data.CARD_CODE)
@@ -112,6 +121,7 @@ class TestUrbanRoutes:
         # Adicione esperas implícitas para que os elementos da web tenham tempo de carregar
         self.driver.implicitly_wait(3)
         self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
+        self.driver.implicitly_wait(2)
         self.urban_routes_page.select_plan()
         self.urban_routes_page.fill_phone_number(data.PHONE_NUMBER)
         self.urban_routes_page.fill_card(data.CARD_NUMBER, data.CARD_CODE)
@@ -130,6 +140,7 @@ class TestUrbanRoutes:
         # Adicione esperas implícitas para que os elementos da web tenham tempo de carregar
         self.driver.implicitly_wait(3)
         self.urban_routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
+        self.driver.implicitly_wait(2)
         self.urban_routes_page.select_plan()
         self.urban_routes_page.fill_phone_number(data.PHONE_NUMBER)
         self.urban_routes_page.fill_card(data.CARD_NUMBER, data.CARD_CODE)

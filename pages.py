@@ -13,7 +13,8 @@ class UrbanRoutesPage:
 
     # OPTION CAR
     PERSONAL_OPTION_LOCATOR = (By.XPATH, '//div[text()="Personal"]')
-    CARSHARING_ICON_LOCATOR = (By.XPATH, '//img[@src="/static/media/drive.05beabd2.svg"]')
+    CARSHARING_ICON_LOCATOR = (By.XPATH, '//img[@src="/static/media/taxi-active.b0be3054.svg"]')
+
     BOOK_BUTTON_LOCATOR = (By.XPATH, '//button[@class="button round"]')
     COMFORT_CARD_LOCATOR = (By.XPATH, '//div[contains(@class, "tcard") and .//img[@src="/static/media/kids.075fd8d4.svg"]]')
     COMFORT_LOCATOR = (By.XPATH, '//img[@src="/static/media/kids.075fd8d4.svg"]')
